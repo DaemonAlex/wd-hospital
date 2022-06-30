@@ -1,10 +1,5 @@
 lib.locale()
-local qtarget = exports.qtarget
-local doctor = `s_m_m_doctor_01`
-print(doctor)
 
----@param function
----@return context menu
 local function openContext()
 	lib.registerContext({
 		id = 'hospital_context',
@@ -35,25 +30,27 @@ local function openContext()
 	lib.showContext('hospital_context')
 end
 
----@param export
----@return entity target
-qtarget:AddTargetModel(doctor, {
-	options = {
-	{
-		icon = 'fas fa-sign-in-alt',
-		label = locale('target_label'),
-		action = function()
-			openContext()
-		end
-	}
-},
-distance = cfg.distance
-})
+local location = vector3(cfg.textUI.x, cfg.textUI.y, cfg.textUI.z)
+local point = lib.points.new(location, 1, {})
 
----@param debug
----@return command
+checkIn = SetInterval(function()
+	function point:onEnter()
+		lib.showTextUI("Press [E] to open the hospital menu")
+	end
+
+	function point:nearby()
+		if self.currentDistance < 2 and IsControlJustReleased(0, 38) then
+			openContext()
+	end
+
+	function point:onExit()
+		lib.hideTextUI()
+		end
+	end
+end)
+
 if cfg.debug then
-RegisterCommand('debug:hospital', function()
-	openContext()
- end)
+	RegisterCommand('debug:hospital', function()
+		openContext()
+	end)
 end

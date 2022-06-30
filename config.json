@@ -6,23 +6,30 @@
 	"statebag": {
 		"set": true,
 	},
-	"name": "Pillbox Hospital",
+	"name": "Ocean Medical Center",
 	"id": 61,
 	"size": 0.7,
 	"color": 23,
 	"npc": {
-		"x": 311.57,
-		"y": -594.01,
-		"z": 43.28,
-		"h": 340.94,
+		"x": -1851.5889,
+		"y": -336.8078,
+		"z": 49.4477,
+		"h": 142.0032,
+	},
+	"textUI": {
+		"x": -1852.7981,
+		"y": -338.5424,
+		"z": 49.4441,
 	},
 	"treatmentcostmoney": true,
 	"treatment": {
-		"price": 500,
+		"price": 2000,
+		"effectduration": 40000,
 	},
 	"bandage": {
 		"price": 300,
 	},
+	"chance": 0.8,
 	"bleeding": {
 		"set": true,
 		"start": 150,
@@ -39,6 +46,5 @@
 		"finish": 190,
 	},
 	"versioncheck": false,
-	"debug": true,
-	"distance": 3.5
+	"debug": true
 }
